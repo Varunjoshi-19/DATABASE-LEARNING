@@ -1,2 +1,53 @@
 ###
 GET http://localhost:5000/database/aggregate
+
+
+
+###
+
+POST http://localhost:5000/database/create-person
+Content-Type:  application/json
+
+{
+     "username" : "kunal",
+     "email" : "kunal34@gmail.com"
+
+}
+
+
+###
+
+POST http://localhost:5000/database/create-post
+Content-Type:  application/json
+
+{
+     "content" : "fast and furious",
+     "userId" : "67d6ba1d0d5256d1aef0dd18"
+
+}
+
+
+
+###
+
+POST http://localhost:5000/database/create-account
+Content-Type:  application/json
+
+{
+     "username" : "kunal bhist",
+     "amount" : 1000
+
+}
+
+
+###
+
+POST http://localhost:5000/database/transfer-money
+Content-Type:  application/json
+
+{
+     "senderAcc" : 84196543699 ,
+     "recieverAcc" :14923197347,
+     "transferAmount" :200
+
+}

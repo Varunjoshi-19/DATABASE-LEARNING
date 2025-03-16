@@ -55,24 +55,41 @@ const userSchema = new Schema({
 
 });
 
-const personSchema = new Schema({ 
+const personSchema = new Schema({
 
-  username : String,
-  email : String,
+  username: String,
+  email: String,
 
 
 });
 
-const postSchema = new Schema({ 
+const postSchema = new Schema({
 
-  content : String,
-  userId : { 
-    type : Schema.Types.ObjectId,
-    ref : "peoples"
+  content: String,
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "peoples"
   }
 
 });
 
+
+const accountHolderSchema = new Schema({
+
+  accountNo: {
+    type: Number,
+    required: true,
+    unique: true,
+    maxlength: [11, "max length should be 11"]
+  },
+
+  username: String,
+  balance: {
+    type: Number,
+    default: 0
+  }
+
+})
 
 // userSchema.pre("save", function (next) {
 
@@ -108,19 +125,21 @@ userSchema.virtual("age").get(function () {
 
 })
 
-userSchema.virtual("fullName").get(function () { 
+userSchema.virtual("fullName").get(function () {
 
-if(!this.firstName || !this.lastName) {
-  return  new Error("firstname or lastname not exists");
-}
+  if (!this.firstName || !this.lastName) {
+    return new Error("firstname or lastname not exists");
+  }
 
-return `${this.firstName} ${this.lastName}`;
+  return `${this.firstName} ${this.lastName}`;
 
 })
 
 
-export const personDoc = model("peoples" , personSchema);
-export const postDoc = model("posts" , postSchema);
+
+export const accountDoc = model("account" , accountHolderSchema);
+export const personDoc = model("peoples", personSchema);
+export const postDoc = model("posts", postSchema);
 export const userModel = model("users", userSchema);
 
 

@@ -5,13 +5,16 @@ const router = Router();
 router.get("/create" , dbService.createUser);
 
 router.get("/post" , dbService.createPersonAndPost);
-router.get("/get-peoples", dbService.getPeoples)
 router.get("/aggregate" , dbService.aggreatedData);
 
 
+router.post("/create-person" , dbService.createPerson);
+router.post("/create-post" , dbService.createPost);
 
 
 
+router.post("/create-account" , dbService.createUserAccount);
+router.post("/transfer-money" , dbService.transferMoney);
 
 
 
